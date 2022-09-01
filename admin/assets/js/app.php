@@ -5,9 +5,11 @@ if($_GET['base']=='su'){
     $js='
     function runsetup(n){
         if(n==2){
-            document.getElementById("insideboxinstall").innerHTML="<h1>Databse Connect</h1><hr><div><b>Databse Host:</b> <input id='."'dbhost'".'><br><b>Databse Name:</b> <input id='."'dbname'".'><br><b>Databse Username:</b> <input id='."'dbuname'".'><br><b>Databse Password:</b> <input id='."'dbpass'".'><br><b>Databse Postfix:</b> <input><br><div id='."'getsecpostkey'".'></div><b><input onChange='."'secpostfixcheck()'".' id='."'checkboxforpostfixsec'".' type='."'checkbox'".'>Databse Intigrate User</b><br></div><br><div id='."'errorred'".'></div><button onClick='."'dbcheckap()'".'>Verify & Procced</button>";
+            document.getElementById("insideboxinstall").innerHTML="<h1>Databse Connect</h1><hr><div><b>Databse Host:</b> <input id='."'dbhost'".'><br><b>Databse Name:</b> <input id='."'dbname'".'><br><b>Databse Username:</b> <input id='."'dbuname'".'><br><b>Databse Password:</b> <input id='."'dbpass'".'><br><b>Databse Postfix:</b> <input><br><div id='."'getsecpostkey'".'></div><b><input onChange='."'secpostfixcheck()'".' id='."'checkboxforpostfixsec'".' type='."'checkbox'".'>Databse Intigrate User</b><br></div><br><div id='."'errorred'".'></div><br><button onClick='."'dbcheckap()'".'>Verify & Procced</button>";
         } else if(n==3){
-            document.getElementById("insideboxinstall").innerHTML="<h1>Site Details</h1><hr><div><b>Site Name:</b> <input id='."'sname'".'><br><b>Username:</b> <input id='."'uname'".'><br><b>Passward:</b> <input id='."'pass'".'><br><b>Primary E-Mail:</b> <input id='."'emaila'".'><br><b>Secondary E-Mail:</b> <input id='."'emailb'".'><br><button onClick='."'sdv()'".'>Save</button>";
+            document.getElementById("insideboxinstall").innerHTML="<h1>Site Details</h1><hr><div><b>Site Name:</b> <input id='."'sname'".'><br><b>Username:</b> <input id='."'uname'".'><br><b>Passward:</b> <input id='."'pass'".'><br><b>Primary E-Mail:</b> <input id='."'emaila'".'><br><b>Secondary E-Mail:</b> <input id='."'emailb'".'><br><div id='."'errorred'".'></div><br><button onClick='."'sdv()'".'>Save</button>";
+        } else if(n==4){
+            document.getElementById("insideboxinstall").innerHTML="";
         }
     }
     function secpostfixcheck(){

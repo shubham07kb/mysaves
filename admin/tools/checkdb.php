@@ -21,8 +21,8 @@ if($setpage==2){
                             $line='$dbhost='."'".$_POST['host']."'; ".'$dbname='."'".$_POST['dbname']."'; ".'$dbuname='."'".$_POST['uname']."'; ".'$dbpass='."'".$_POST['pass']."'; ";
                             $file=$dr.'/formatconfig.php';
                             $lines=file($file);
-                            $lines[9]=$line.PHP_EOL;
-                            $lines[10]=''.PHP_EOL;
+                            $lines[1]=$line.PHP_EOL;
+                            $lines[2]=''.PHP_EOL;
                             file_put_contents($file, implode('', $lines));
                             $line='$setpage=3;';
                             $file=$dr.'/config.php';
