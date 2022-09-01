@@ -1,6 +1,6 @@
 <?php
-$dr=$_SERVER["DOCUMENT_ROOT"];
-include $dr.'/config.php';
+$cw=$_SERVER['MC_MAIN_DIR'];
+include $cw.'/config.php';
 header('Content-Type: application/json; charset=utf-8');
 if($setpage==3){
     $p=1;
@@ -13,12 +13,12 @@ if($setpage==3){
                             if(usernamevalidation($_POST['uname'])==1){
                                 if(filter_var($_POST['emaila'], FILTER_VALIDATE_EMAIL)){
                                     if(filter_var($_POST['emailb'], FILTER_VALIDATE_EMAIL)){
-                                        $file=$dr.'/formatconfig.php';
+                                        $file=$cw.'/formatconfig.php';
                                         $lines=file($file);
                                         $lines[3]='$sitename="'.$_POST['sname'].'"; $username="'.$_POST['uname'].'"; $password="'.$_POST['pass'].'"; $emaila="'.$_POST['emaila'].'"; $emailb="'.$_POST['emailb'].'";'.PHP_EOL;
                                         $lines[4]=''.PHP_EOL;
                                         file_put_contents($file, implode('', $lines));
-                                        $file=$dr.'/config.php';
+                                        $file=$cw.'/config.php';
                                         $lines=file($file);
                                         $line='$setpage=4; $emailla="'.$_POST['emaila'].'"; $emaillb="'.$_POST['emailb'].'";';
                                         $lines[5]=$line.PHP_EOL;

@@ -2,8 +2,8 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 function domail($a,$b,$c,$d,$e,$f,$g){
-    $dr=$_SERVER["DOCUMENT_ROOT"];
-    require $dr.'/site/tools/phpmailer/vendor/autoload.php';
+    $cw=$_SERVER['MC_MAIN_DIR'];
+    require $cw.'/site/tools/phpmailer/vendor/autoload.php';
     $mail = new PHPMailer(TRUE);
     try {
         $mail->isSMTP(); 
@@ -25,8 +25,8 @@ function domail($a,$b,$c,$d,$e,$f,$g){
         return 0;
     }
 }
-$dr=$_SERVER["DOCUMENT_ROOT"];
-include $dr.'/config.php';
+$cw=$_SERVER['MC_MAIN_DIR'];
+include $cw.'/config.php';
 header('Content-Type: application/json; charset=utf-8');
 if($setpage==4){
     if(isset($_POST['ehost']) and $_POST['ehost']!=''){
@@ -41,12 +41,12 @@ if($setpage==4){
                             $rb=domail($_POST['ehost'],$_POST['euname'],$_POST['epass'],$_POST['etype'],$_POST['eport'],$ub,$emaillb); 
                             if($ra==1 and $rb==1){
                                 $line='$ehost='."'".$_POST['ehost']."'; ".'$euname='."'".$_POST['euname']."'; ".'$epass='."'".$_POST['epass']."'; ".'$etype='."'".$_POST['etype']."'; ".'$eport='."'".$_POST['eport']."';";
-                                $file=$dr.'/formatconfig.php';
+                                $file=$cw.'/formatconfig.php';
                                 $lines=file($file);
                                 $lines[5]=$line.PHP_EOL;
                                 $lines[6]=''.PHP_EOL;
                                 file_put_contents($file, implode('', $lines));
-                                $file=$dr.'/config.php';
+                                $file=$cw.'/config.php';
                                 $lines=file($file);
                                 $lines[4]='$uid="'.$uid.'"; $otpa="'.$ua.'"; $otpb="'.$ub.'";'.PHP_EOL;
                                 $lines[5]='$setpage=5; $emailla="'.$emailla.'"; $emaillb="'.$emaillb.'";'.PHP_EOL;

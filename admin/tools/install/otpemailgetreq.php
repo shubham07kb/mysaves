@@ -1,6 +1,6 @@
 <?php
-$dr=$_SERVER["DOCUMENT_ROOT"];
-include $dr.'/config.php';
+$cw=$_SERVER['MC_MAIN_DIR'];
+include $cw.'/config.php';
 header('Content-Type: application/json; charset=utf-8');
 if($_POST['uid']==$uid){
     if(isset($emailla) and isset($emaillb)){

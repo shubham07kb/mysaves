@@ -36,7 +36,7 @@ if($_GET['base']=='su'){
                 }
             }
         };
-        xhttp.open("POST", "/admin/tools/otpverify.php");
+        xhttp.open("POST", "/admin/tools/install/otpverify.php");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("otpa="+a+"&otpb="+b+"&uid="+localStorage.getItem("uid"));
     }
@@ -53,7 +53,7 @@ if($_GET['base']=='su'){
                 }
             }
         };
-        xhttp.open("POST", "/admin/tools/otpemailgetreq.php");
+        xhttp.open("POST", "/admin/tools/install/otpemailgetreq.php");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("uid="+localStorage.getItem("uid"));
     }
@@ -90,7 +90,7 @@ if($_GET['base']=='su'){
                 }
             }
         };
-        xhttp.open("POST", "/admin/tools/checkdb.php");
+        xhttp.open("POST", "/admin/tools/install/checkdb.php");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("host="+a+"&dbname="+b+"&uname="+c+"&pass="+d+"&udbi="+e+"&pdbs="+f+"&sdbs="+g);
     }
@@ -112,7 +112,7 @@ if($_GET['base']=='su'){
                 }
             }
         };
-        xhttp.open("POST", "/admin/tools/sitedataadd.php");
+        xhttp.open("POST", "/admin/tools/install/sitedataadd.php");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("sname="+a+"&uname="+b+"&pass="+c+"&emaila="+d+"&emailb="+e+"&uid="+localStorage.getItem("uid"));
     }
@@ -134,7 +134,7 @@ if($_GET['base']=='su'){
                 }
             }
         };
-        xhttp.open("POST", "/admin/tools/emailready.php");
+        xhttp.open("POST", "/admin/tools/install/emailready.php");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("ehost="+a+"&euname="+b+"&epass="+c+"&etype="+d+"&eport="+e+"&uid="+localStorage.getItem("uid"));
     }

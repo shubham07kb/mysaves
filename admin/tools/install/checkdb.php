@@ -1,6 +1,6 @@
 <?php
-$dr=$_SERVER["DOCUMENT_ROOT"];
-include $dr.'/config.php';
+$cw=$_SERVER['MC_MAIN_DIR'];
+include $cw.'/config.php';
 header('Content-Type: application/json; charset=utf-8');
 if($setpage==2){
     if(isset($_POST['host']) and $_POST['host']!=''){
@@ -22,13 +22,13 @@ if($setpage==2){
                                         $json['statv']=1;
                                         $p=1;
                                         $line='$dbhost='."'".$_POST['host']."'; ".'$dbname='."'".$_POST['dbname']."'; ".'$dbuname='."'".$_POST['uname']."'; ".'$dbpass='."'".$_POST['pass']."'; ";
-                                        $file=$dr.'/formatconfig.php';
+                                        $file=$cw.'/formatconfig.php';
                                         $lines=file($file);
                                         $lines[1]=$line.PHP_EOL;
                                         $lines[2]='$dbsui="'.$_POST['udbi'].'"; $pdbs="'.$_POST['pdbs'].'"; $sdbs="'.$_POST['sdbs'].'";'.PHP_EOL;
                                         file_put_contents($file, implode('', $lines));
                                         $line='$setpage=3;';
-                                        $file=$dr.'/config.php';
+                                        $file=$cw.'/config.php';
                                         $lines=file($file);
                                         $lines[5]=$line.PHP_EOL;
                                         $lines[4]='$uid="'.$json['uni'].'";'.PHP_EOL;

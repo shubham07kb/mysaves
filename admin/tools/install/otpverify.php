@@ -1,15 +1,19 @@
 <?php
-$dr=$_SERVER["DOCUMENT_ROOT"];
-include $dr.'/config.php';
+$cw=$_SERVER['MC_MAIN_DIR'];
+include $cw.'/config.php';
 header('Content-Type: application/json; charset=utf-8');
 if(isset($_POST['uid']) and $_POST['uid']==$uid){
     if(isset($_POST['otpa']) and $_POST['otpa']!=''){
         if(isset($_POST['otpb']) and $_POST['otpb']!=''){
             if($_POST['otpa']==$otpa and $_POST['otpb']==$otpb){
-                $file=$dr.'/config.php';
+                $file=$cw.'/config.php';
                 $lines=file($file);
                 $uiid=uniqid();
                 $lines[5]='$setpage=6; $emailla="'.$emailla.'"; $emaillb="'.$emaillb.'"; $iid="'.$uiid.'";'.PHP_EOL;
+                file_put_contents($file, implode('', $lines));
+                $file=$cw.'/formatconfig.php';
+                $lines=file($file);
+                $lines[7]='$iid="'.$uiid.'";'.PHP_EOL;
                 file_put_contents($file, implode('', $lines));
                 $json['stat']='Done';
                 $json['iid']=$uiid;
