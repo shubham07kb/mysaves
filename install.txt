@@ -1,0 +1,60 @@
+Thank for using MeowCon
+
+
+
+About MeowCon, Its an single page to multipage web application based cms that provides difficlt but interconnected operation eaisly
+
+
+
+Here are step of installation
+Ready, First page Lets get your database details, be cool and read instruction carefully, also mentioned on installation page thats you domain, for localhost just go with localhost and see other step below
+
+Installation requires Internet Connectivity for sure.
+
+DB type: select your database.
+Host-  sql.meow.com or localhost as you set 
+Database Name- name of database you created
+Username- As a needed try username name difficult with passward
+Password- You know
+Prifix- Enter a prifix for a db table names (if you are going to install multiple MeowCon on same database to use same username database in future please tick option below, althougth, you can do it in future anytime)
+if you ticked then enter secendory prefix
+once you change site to multi connect, rollback is void for safty, if we develop in future to provide rollback, you can do so.
+
+Note, we provide databse transfer features, but only use if your hosting provide good transfer rate.
+
+Click Verify
+if your database able to connect, good you are ready to go, and have good start. Next we will set site Details.
+
+
+Site details
+
+Site Name- Name of website, You can change in future
+Username - It will be primary username and we create some more username by prifix for you test purpose.
+Password - Make it difficult and make sure Unique
+Email- Email primary to be your email that is active for sure.
+Secondary - For safty like gmail or other as access backup. You need to verify this in next step. 
+Search Engine visibility-tick or not
+https active: yes or no
+
+
+Enter email hoat for phpmailer
+
+Host of mail provider- smtp.meow.com 
+Username- username of email like admin@meow.com
+password- Secret 
+type - tls/ssl
+port- ???
+
+
+Lets verify Email, 
+Primary, Get otp 
+Please Enter here 
+
+Secondart Enter Here (Diffrent)
+
+
+Setting things up, please wait... 
+
+
+You are ready, Please Login with your details 
+Welcome to Dashboard...
