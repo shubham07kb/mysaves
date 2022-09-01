@@ -1,14 +1,12 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-function domail(){
+function domail($a,$b,$c,$d,$e,$f,$g){
+    $dr=$_SERVER["DOCUMENT_ROOT"];
     require $dr.'/site/tools/phpmailer/vendor/autoload.php';
-    require $dr.'/site/tools/phpmailer/vendor/phpmailer/phpmailer/src/Exception.php';
-    require $dr.'/site/tools/phpmailer/vendor/phpmailer/phpmailer/src/PHPMailer.php';
-    require $dr.'/site/tools/phpmailer/vendor/phpmailer/phpmailer/src/SMTP.php';
     $mail = new PHPMailer(TRUE);
     try {
-        $mail->isSMTP($a,$b,$c,$d,$e,$f,$g); 
+        $mail->isSMTP(); 
         $mail->Host       = $a; 
         $mail->SMTPAuth   = true; 
         $mail->Username   = $b; 
@@ -17,13 +15,13 @@ function domail(){
         $mail->Port       = $e; 
         $mail->setFrom($b, 'MeowCon');
         $mail->addAddress($g);
-        $mail->isHTML($emailishtml);
-        $mail->Subject = "OTP";
+        $mail->isHTML(true);
+        $mail->Subject = "OTP for ".$g;
         $mail->Body    = $f;
         $mail->AltBody = $f;
         $mail->send();
         return 1;
-    } catch (Exception $e) {
+    } catch(Exception $e) {
         return 0;
     }
 }
@@ -36,10 +34,33 @@ if($setpage==4){
             if(isset($_POST['epass']) and $_POST['epass']!=''){
                 if(isset($_POST['etype']) and $_POST['etype']!=''){
                     if(isset($_POST['eport']) and $_POST['eport']!=''){
-                        $ua=uniqid();
-                        $ra=domail($_POST['ehost'],$_POST['euname'],$_POST['epass'],$_POST['etype'],$_POST['eport'],$u,$emailla);
-                        $ub=uniqid();
-                        $rb=domail($_POST['ehost'],$_POST['euname'],$_POST['epass'],$_POST['etype'],$_POST['eport'],$u,$emailla);
+                        if($_POST['uid']==$uid){
+                            $ua=uniqid();
+                            $ra=domail($_POST['ehost'],$_POST['euname'],$_POST['epass'],$_POST['etype'],$_POST['eport'],$ua,$emailla);
+                            $ub=uniqid();
+                            $rb=domail($_POST['ehost'],$_POST['euname'],$_POST['epass'],$_POST['etype'],$_POST['eport'],$ub,$emaillb); 
+                            if($ra==1 and $rb==1){
+                                $line='$ehost='."'".$_POST['ehost']."'; ".'$euname='."'".$_POST['euname']."'; ".'$epass='."'".$_POST['epass']."'; ".'$etype='."'".$_POST['etype']."'; ".'$eport='."'".$_POST['eport']."';";
+                                $file=$dr.'/formatconfig.php';
+                                $lines=file($file);
+                                $lines[5]=$line.PHP_EOL;
+                                $lines[6]=''.PHP_EOL;
+                                file_put_contents($file, implode('', $lines));
+                                $file=$dr.'/config.php';
+                                $lines=file($file);
+                                $lines[4]='$uid="'.$uid.'"; $otpa="'.$ua.'"; $otpb="'.$ub.'";'.PHP_EOL;
+                                $lines[5]='$setpage=5; $emailla="'.$emailla.'"; $emaillb="'.$emaillb.'";'.PHP_EOL;
+                                file_put_contents($file, implode('', $lines));
+                                $json['stat']='Send';
+                                $json['statv']=1;
+                            } else{
+                                $json['stat']='Error';
+                                $json['statv']=0;
+                            }
+                        } else{
+                            $json['stat']='Only Complete using same device';
+                            $json['statv']=0;
+                        }
                     }
                 }
             }
@@ -55,8 +76,8 @@ echo json_encode($json);
 
 
 
-
-
+<?php
+/*
 $emailhost="smtp.gmail.com";    /
 $emailsmtpauth=true;            /
 $emailusername="kumarbansal.shubham07@gmail.com";    /
@@ -68,3 +89,5 @@ $emailishtml=true;
 $emailsubject="OTP";    /
 $emailbody="";    /
 $emailbodyp="";    /
+*/
+?>
