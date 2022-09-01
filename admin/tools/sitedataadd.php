@@ -18,6 +18,11 @@ if($setpage==3){
                                         $lines[3]='$sitename="'.$_POST['sname'].'"; $username="'.$_POST['uname'].'"; $password="'.$_POST['pass'].'"; $emaila="'.$_POST['emaila'].'"; $emailb="'.$_POST['emailb'].'";'.PHP_EOL;
                                         $lines[4]=''.PHP_EOL;
                                         file_put_contents($file, implode('', $lines));
+                                        $file=$dr.'/config.php';
+                                        $lines=file($file);
+                                        $line='$setpage=4; $emailla="'.$_POST['emaila'].'"; $emaillb="'.$_POST['emailb'].'";';
+                                        $lines[5]=$line.PHP_EOL;
+                                        file_put_contents($file, implode('', $lines));
                                         $json['stat']='Done';
                                         $json['statv']=1;
                                     } else{

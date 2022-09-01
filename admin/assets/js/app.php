@@ -9,7 +9,7 @@ if($_GET['base']=='su'){
         } else if(n==3){
             document.getElementById("insideboxinstall").innerHTML="<h1>Site Details</h1><hr><div><b>Site Name:</b> <input id='."'sname'".'><br><b>Username:</b> <input id='."'uname'".'><br><b>Passward:</b> <input id='."'pass'".'><br><b>Primary E-Mail:</b> <input id='."'emaila'".'><br><b>Secondary E-Mail:</b> <input id='."'emailb'".'><br><div id='."'errorred'".'></div><br><button onClick='."'sdv()'".'>Save</button>";
         } else if(n==4){
-            document.getElementById("insideboxinstall").innerHTML="";
+            document.getElementById("insideboxinstall").innerHTML="<h1>Email Account Setup & Validation</h1>";
         }
     }
     function secpostfixcheck(){
