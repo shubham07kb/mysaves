@@ -51,7 +51,7 @@ if($_GET['base']=='su'){
                 console.log(this.responseText);
                 var js=JSON.parse(this.responseText);
                 if(js.statv==1){
-                    runsetup(3);
+                    runsetup(4);
                 } else if(js.statv==0){
                     document.getElementById("errorred").innerHTML=js.stat;
                 }

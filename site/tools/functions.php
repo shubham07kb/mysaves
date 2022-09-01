@@ -1,0 +1,5 @@
+<?php
+function usernamevalidation($uname){
+    
+}
+?>

@@ -10,4 +10,5 @@ if($setpage!=0){
 if($setpage!=1){
     $setpagey=1;
 }
+include $dr.'/site/tools/functions.php';
 ?>
