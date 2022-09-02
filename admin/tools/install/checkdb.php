@@ -8,8 +8,8 @@ if($setpage==2){
             if(isset($_POST['uname']) and $_POST['uname']!=''){
                 if(isset($_POST['pass']) and $_POST['pass']!=''){
                     if(isset($_POST['udbi']) and $_POST['udbi']!=''){
-                        if(isset($_POST['pdbs']) and $_POST['pdbs']!=''){
-                            if(isset($_POST['sdbs']) and $_POST['sdbs']!=''){
+                        if(isset($_POST['pdbs']) and $_POST['pdbs']!='' and notcontainthanalphabet($_POST['pdbs'])==1){
+                            if(isset($_POST['sdbs']) and $_POST['sdbs']!='' and notcontainthanalphabet($_POST['sdbs'])==1){
                                 try{
                                     $conn=mysqli_connect($_POST['host'],$_POST['uname'],$_POST['pass'],$_POST['dbname']);
                                     if(!$conn){

@@ -19,6 +19,30 @@ if($_GET['base']=='su'){
     }
     function callfinalinstall(){
         console.log("started");
+        document.getElementById("insideboxinstall").innerHTML="<h1>Output Console</h1><hr><div id='."'outcon'".'></div><br><div id='."'outconon'".'></div><br><div id='."'errorred'".'></div><br>";
+        installa();
+    }
+    function installa(){
+        document.getElementById("outconon").innerHTML="Checking All Value Pressent...";
+        xhttp=new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                var js=JSON.parse(this.responseText);
+                if(js.statv==1){
+                    document.getElementById("outcon").innerHTML+=js.stat+"<br>";
+                    installb();
+                } else if(js.statv==0){
+                    document.getElementById("errorred").innerHTML=js.stat;
+                }
+            }
+        };
+        xhttp.open("POST", "/admin/tools/install/installcheck.php");
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("ch=allneedcomplete&iid="+localStorage.getItem("iid"));
+    }
+    function installb(){
+        
     }
     function gotoinstallpage(){
         a=document.getElementById("otpentera").value;
