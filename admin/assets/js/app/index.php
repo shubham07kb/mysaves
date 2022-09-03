@@ -19,7 +19,7 @@ if($_GET['base']=='su'){
     }
     function callfinalinstall(){
         console.log("started");
-        document.getElementById("insideboxinstall").innerHTML="<h1>Output Console</h1><hr><div id='."'outcon'".'></div><br><div id='."'outconon'".'></div><br><div id='."'errorred'".'></div><br><div><button  onClick='."'logouting()'".'>Click Install to Install</button></div>";
+        document.getElementById("insideboxinstall").innerHTML="<h1>Output Console</h1><hr><div id='."'outcon'".'></div><br><div id='."'outconon'".'></div><br><div id='."'errorred'".'></div><br>";
         installa();
     }
     function logouting(){
@@ -83,7 +83,7 @@ if($_GET['base']=='su'){
         xhttp.send("ch=allneedcomplete&iid="+localStorage.getItem("iid"));
     }
     function installd(){
-        document.getElementById("outconon").innerHTML="Entering First Admin and all roles for test perpose...";
+        document.getElementById("outconon").innerHTML="Entering First Admin and all roles for test perpose adn other DB data...";
         xhttp=new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -97,7 +97,7 @@ if($_GET['base']=='su'){
                 }
             }
         };
-        xhttp.open("POST", "/admin/tools/install/addingusers.php");
+        xhttp.open("POST", "/admin/tools/install/addingdbitems.php");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("ch=allneedcomplete&iid="+localStorage.getItem("iid"));
     }
@@ -175,7 +175,8 @@ if($_GET['base']=='su'){
                 var js=JSON.parse(this.responseText);
                 if(js.statv==1){
                     document.getElementById("outcon").innerHTML+=js.stat+"<br>";
-                    
+                    document.getElementById("outconon").innerHTML="You will be redirected to System Dashboard Login Page in 5 seconds, or click button below<br><button onClick='."'logouting()'".'>System Dashboard Login</button>";
+                    redirecttosdlt();
                 } else if(js.statv==0){
                     document.getElementById("errorred").innerHTML=js.stat;
                 }
@@ -184,6 +185,11 @@ if($_GET['base']=='su'){
         xhttp.open("POST", "/admin/tools/install/donemailnclear.php");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("ch=allneedcomplete&iid="+a);
+    }
+    function redirecttosdlt(){
+        setTimeout(function(){
+            logouting();
+         }, 5000);
     }
     function gotoinstallpage(){
         a=document.getElementById("otpentera").value;

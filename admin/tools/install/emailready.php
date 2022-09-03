@@ -74,21 +74,3 @@ if($setpage==4){
 ob_end_clean();
 echo json_encode($json);
 ?>
-
-
-
-<?php
-/*
-$emailhost="smtp.gmail.com";    /
-$emailsmtpauth=true;            /
-$emailusername="kumarbansal.shubham07@gmail.com";    /
-$emailpassword="jplqmmfsqlhqfndn";     /
-$emailport=587;    /
-$emailsender="kumarbansal.shubham07@gmail.com";
-$emailto="19BCS4309@cuchd.in";
-$emailishtml=true;
-$emailsubject="OTP";    /
-$emailbody="";    /
-$emailbodyp="";    /
-*/
-?>

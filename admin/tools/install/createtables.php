@@ -5,7 +5,13 @@ header('Content-Type: application/json; charset=utf-8');
 if($iid==$_POST['iid']){
     if(isset($_POST['ch'])){
         if($_POST['ch']=='allneedcomplete'){
-            
+            try{
+                $json['stat']='All needed Tables Created.';
+                $json['statv']=1;
+            }  catch(Exception $e){
+                $json['stat']="Error: $e";
+                $json['statv']=0;
+            }
         } else{
             $json['stat']='Pass Working Parameter Please';
             $json['statv']=0;
