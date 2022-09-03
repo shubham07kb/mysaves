@@ -14,13 +14,16 @@ if($_GET['base']=='su'){
             document.getElementById("insideboxinstall").innerHTML="<h1>OTP Verification</h1><hr><div id='."'setgetotp'".'><b>Getting Data</b></div><br><div id='."'errorred'".'></div><button onClick='."'gotoinstallpage()'".'>Verify OTP</button>";
             otpemailget();
         } else if(n==6){
-            document.getElementById("insideboxinstall").innerHTML="<div><b>Almost Done, Nice Work</b><hr><button  onClick='."'callfinalinstall()'".'>Click Install to Install</button></div>"
+            document.getElementById("insideboxinstall").innerHTML="<div><b>Almost Done, Nice Work</b><hr><button  onClick='."'callfinalinstall()'".'>Click Install to Install</button></div>";
         }
     }
     function callfinalinstall(){
         console.log("started");
-        document.getElementById("insideboxinstall").innerHTML="<h1>Output Console</h1><hr><div id='."'outcon'".'></div><br><div id='."'outconon'".'></div><br><div id='."'errorred'".'></div><br>";
+        document.getElementById("insideboxinstall").innerHTML="<h1>Output Console</h1><hr><div id='."'outcon'".'></div><br><div id='."'outconon'".'></div><br><div id='."'errorred'".'></div><br><div><button  onClick='."'logouting()'".'>Click Install to Install</button></div>";
         installa();
+    }
+    function logouting(){
+        window.location.href = "/dashboard/admin";
     }
     function installa(){
         document.getElementById("outconon").innerHTML="Checking All Value Pressent...";
@@ -42,7 +45,145 @@ if($_GET['base']=='su'){
         xhttp.send("ch=allneedcomplete&iid="+localStorage.getItem("iid"));
     }
     function installb(){
-        
+        document.getElementById("outconon").innerHTML="Ready Config File...";
+        xhttp=new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                var js=JSON.parse(this.responseText);
+                if(js.statv==1){
+                    document.getElementById("outcon").innerHTML+=js.stat+"<br>";
+                    installc();
+                } else if(js.statv==0){
+                    document.getElementById("errorred").innerHTML=js.stat;
+                }
+            }
+        };
+        xhttp.open("POST", "/admin/tools/install/setupconfig.php");
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("ch=allneedcomplete&iid="+localStorage.getItem("iid"));
+    }
+    function installc(){
+        document.getElementById("outconon").innerHTML="Creating Tables...";
+        xhttp=new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                var js=JSON.parse(this.responseText);
+                if(js.statv==1){
+                    document.getElementById("outcon").innerHTML+=js.stat+"<br>";
+                    installd();
+                } else if(js.statv==0){
+                    document.getElementById("errorred").innerHTML=js.stat;
+                }
+            }
+        };
+        xhttp.open("POST", "/admin/tools/install/createtables.php");
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("ch=allneedcomplete&iid="+localStorage.getItem("iid"));
+    }
+    function installd(){
+        document.getElementById("outconon").innerHTML="Entering First Admin and all roles for test perpose...";
+        xhttp=new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                var js=JSON.parse(this.responseText);
+                if(js.statv==1){
+                    document.getElementById("outcon").innerHTML+=js.stat+"<br>";
+                    installe();
+                } else if(js.statv==0){
+                    document.getElementById("errorred").innerHTML=js.stat;
+                }
+            }
+        };
+        xhttp.open("POST", "/admin/tools/install/addingusers.php");
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("ch=allneedcomplete&iid="+localStorage.getItem("iid"));
+    }
+    function installe(){
+        document.getElementById("outconon").innerHTML="Setting up PHP Mailer...";
+        xhttp=new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                var js=JSON.parse(this.responseText);
+                if(js.statv==1){
+                    document.getElementById("outcon").innerHTML+=js.stat+"<br>";
+                    installf();
+                } else if(js.statv==0){
+                    document.getElementById("errorred").innerHTML=js.stat;
+                }
+            }
+        };
+        xhttp.open("POST", "/admin/tools/install/setupmailservice.php");
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("ch=allneedcomplete&iid="+localStorage.getItem("iid"));
+    }
+    function installf(){
+        document.getElementById("outconon").innerHTML="Store setting in Database for restore Point...";
+        xhttp=new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                var js=JSON.parse(this.responseText);
+                if(js.statv==1){
+                    document.getElementById("outcon").innerHTML+=js.stat+"<br>";
+                    installg();
+                } else if(js.statv==0){
+                    document.getElementById("errorred").innerHTML=js.stat;
+                }
+            }
+        };
+        xhttp.open("POST", "/admin/tools/install/backupmaker.php");
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("ch=allneedcomplete&iid="+localStorage.getItem("iid"));
+    }
+    function installg(){
+        document.getElementById("outconon").innerHTML="Finishing Up and Finishing Check...";
+        xhttp=new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                var js=JSON.parse(this.responseText);
+                if(js.statv==1){
+                    document.getElementById("outcon").innerHTML+=js.stat+"<br>";
+                    installh();
+                } else if(js.statv==0){
+                    document.getElementById("errorred").innerHTML=js.stat;
+                }
+            }
+        };
+        xhttp.open("POST", "/admin/tools/install/finishcheck.php");
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("ch=allneedcomplete&iid="+localStorage.getItem("iid"));
+    }
+    function installh(){
+        document.getElementById("outconon").innerHTML="Removing Installing meta data...";
+        iid=localStorage.getItem("iid");
+        localStorage.removeItem("iid");
+        localStorage.removeItem("uid");
+        document.getElementById("outcon").innerHTML+="Removed Device Variables..."+"<br>";
+        installi(iid);
+    }
+    function installi(a){
+        document.getElementById("outconon").innerHTML="Logout and Completion mail...";
+        xhttp=new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                var js=JSON.parse(this.responseText);
+                if(js.statv==1){
+                    document.getElementById("outcon").innerHTML+=js.stat+"<br>";
+                    
+                } else if(js.statv==0){
+                    document.getElementById("errorred").innerHTML=js.stat;
+                }
+            }
+        };
+        xhttp.open("POST", "/admin/tools/install/donemailnclear.php");
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("ch=allneedcomplete&iid="+a);
     }
     function gotoinstallpage(){
         a=document.getElementById("otpentera").value;
@@ -88,7 +229,7 @@ if($_GET['base']=='su'){
             document.getElementById("getsecpostkey").innerHTML="";
         }
     }
-    function dbcheckap(){
+    async function dbcheckap(){
         var a=document.getElementById("dbhost").value;
         var b=document.getElementById("dbname").value;
         var c=document.getElementById("dbuname").value;
@@ -117,6 +258,7 @@ if($_GET['base']=='su'){
         xhttp.open("POST", "/admin/tools/install/checkdb.php");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("host="+a+"&dbname="+b+"&uname="+c+"&pass="+d+"&udbi="+e+"&pdbs="+f+"&sdbs="+g);
+        console.log("host="+a+"&dbname="+b+"&uname="+c+"&pass="+d+"&udbi="+e+"&pdbs="+f+"&sdbs="+g);
     }
     function sdv(){
         var a=document.getElementById("sname").value;

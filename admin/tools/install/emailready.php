@@ -36,9 +36,10 @@ if($setpage==4){
                     if(isset($_POST['eport']) and $_POST['eport']!=''){
                         if($_POST['uid']==$uid){
                             $ua=uniqid();
-                            $ra=domail($_POST['ehost'],$_POST['euname'],$_POST['epass'],$_POST['etype'],$_POST['eport'],$ua,$emailla);
+                            //$ra=domail($_POST['ehost'],$_POST['euname'],$_POST['epass'],$_POST['etype'],$_POST['eport'],$ua,$emailla);
                             $ub=uniqid();
-                            $rb=domail($_POST['ehost'],$_POST['euname'],$_POST['epass'],$_POST['etype'],$_POST['eport'],$ub,$emaillb); 
+                            $ra=1; $rb=1;
+                            //$rb=domail($_POST['ehost'],$_POST['euname'],$_POST['epass'],$_POST['etype'],$_POST['eport'],$ub,$emaillb); 
                             if($ra==1 and $rb==1){
                                 $line='$ehost='."'".$_POST['ehost']."'; ".'$euname='."'".$_POST['euname']."'; ".'$epass='."'".$_POST['epass']."'; ".'$etype='."'".$_POST['etype']."'; ".'$eport='."'".$_POST['eport']."';";
                                 $file=$cw.'/formatconfig.php';

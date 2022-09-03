@@ -41,28 +41,36 @@ if($setpage==2){
                                 }
                             } else{
                                 $p=0;
+                                $d=1;
                             }
                         } else{
                             $p=0;
+                            $d=2;
                         }
                     } else{
                         $p=0;
+                        $d=3;
                     }
                 } else{
                     $p=0;
+                    $d=4;
                 }
             } else{
                 $p=0;
+                $d=5;
             }
         } else{
             $p=0;
+            $d=6;
         }
     } else{
         $p=0;
+        $d=7;
     }
     if($p==0){
         $json['stat']='Not Connect, Value Not Present';
         $json['statv']=0;
+        $json['d']=$d;
     }
 } else{
     $json['stat']='Not Connect, Already Entered, Only access to this when installation Complete';

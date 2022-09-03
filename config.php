@@ -1,16 +1,16 @@
 <?php
 //Do not enter anything till line... 
 //Also just edit string till that if know perfectly, see documentaion for more
-$appname='MeowCon';
-$uid="6311103cafe31"; $otpa="6311104c77b35"; $otpb="63111050b5446";
-$setpage=6; $emailla="kumarbansal.shubham07@gmail.com"; $emaillb="shubhamkumarbansal07@gmail.com"; $iid="63111071b4797";
+$appname='MeowCon'; $appver='v:0.0.1_beta';
+
+$setpage=2;
 if($setpage!=0){
     $setpagey=1;
 }
 if($setpage!=1){
     $setpagey=1;
 }
-$k=1;
+$k=0;
 if($k==0){
     $file=$cw.'/.htaccess';
     $lines=file($file);

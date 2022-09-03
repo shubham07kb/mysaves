@@ -1,6 +1,5 @@
 <?php
 $cw=$_SERVER['MC_MAIN_DIR'];
-include $cw.'/config.php';
 include $cw.'/formatconfig.php';
 header('Content-Type: application/json; charset=utf-8');
 if($iid==$_POST['iid']){
