@@ -1,0 +1,23 @@
+{
+    "name": "MeowCon",
+    "short_name": "MeowCon",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "start_url": "/site/webapp?f=y",
+    "scope": "/mail/",
+    "icons": [
+        {
+            "src": "/site/logo/d/logo-256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/site/logo/d/logo-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#FFFFFF",
+    "related_applications": [],
+    "shortcuts": []
+}

@@ -15,7 +15,7 @@ if($iid==$_POST['iid']){
                 $i++;
                 $lines[$i]='//Also just edit string till that if know perfectly, see documentaion for more'.PHP_EOL;
                 $i++;
-                $lines[$i]='$appname="MeowCon"; $appver="v:0.0.1_beta";'.PHP_EOL;
+                $lines[$i]='$appname="MeowCon"; $appver="v:0.0.2_beta";'.PHP_EOL;
                 $i++;
                 if($dbsui=="n"){
                     $sdbs=$pdbs;

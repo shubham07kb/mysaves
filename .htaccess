@@ -1,5 +1,5 @@
 #Do Not Change Below#
-
+SetEnv MC_MAIN_DIR "D:\code space\web\php\mysaves\htdocs"
 ErrorDocument 400 /error/400/
 ErrorDocument 401 /error/401/
 ErrorDocument 403 /error/403/
