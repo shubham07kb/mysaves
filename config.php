@@ -9,7 +9,7 @@ if($setpage==2 or $setpage==3 or $setpage==4 or $setpage==5 or $setpage==6){
 } if($setpage==0){
     $setpagey=0;
 }
-$k=0;
+$k=1;
 if($k==0){
     $file=$cw.'/.htaccess';
     $lines=file($file);
